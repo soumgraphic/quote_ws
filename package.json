@@ -1,0 +1,28 @@
+{
+  "name": "quotews",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node" : "^10"
+  },
+  "author": "Soumgraphic",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "~1.9.0",
+    "mysql": "^2.16.0",
+    "nodemailer": "^4.6.8",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}

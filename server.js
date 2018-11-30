@@ -1,7 +1,7 @@
 const express = require ('express'),
     app = express (),
     bodyParser = require('body-parser');
-port = process.env.PORT || 3000;
+port = process.env.PORT || 8080;
 global.config = require('./config/config');
 
 //Parse l'application/json
