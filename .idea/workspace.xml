@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80f88c64-8659-40fe-adf7-931b520f7492" name="Default Changelist" comment="First quote git version">
+      <change afterPath="$PROJECT_DIR$/model/ws_quote_db_mysql_5.5.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quote_users/users.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_users/users.model.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
         <item name="ws_quote_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="ws_quote_db: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="q_quote: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="u_user: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -68,12 +69,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="SCHEMA:ws_quote_db" value="1" />
-          <entry key="js" value="287" />
+          <entry key="js" value="289" />
           <entry key="json" value="15" />
           <entry key="pug" value="1" />
           <entry key="q_category" value="1" />
           <entry key="q_quote" value="1" />
-          <entry key="sql" value="3" />
+          <entry key="sql" value="5" />
           <entry key="ts" value="2" />
           <entry key="www" value="3" />
         </counts>
@@ -82,8 +83,9 @@
         <counts>
           <entry key="Database Element" value="1" />
           <entry key="JSON" value="15" />
-          <entry key="JavaScript" value="290" />
+          <entry key="JavaScript" value="292" />
           <entry key="PLAIN_TEXT" value="1" />
+          <entry key="SQL" value="2" />
           <entry key="Scratch" value="3" />
           <entry key="TypeScript" value="2" />
           <entry key="UML" value="2" />
@@ -91,9 +93,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="12087" />
+          <entry key="js" value="12101" />
           <entry key="json" value="112" />
-          <entry key="sql" value="332" />
+          <entry key="sql" value="475" />
           <entry key="txt" value="23" />
           <entry key="www" value="2" />
         </counts>
@@ -102,10 +104,10 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="112" />
-          <entry key="JavaScript" value="12086" />
+          <entry key="JavaScript" value="12100" />
           <entry key="PLAIN_TEXT" value="23" />
           <entry key="RegExp" value="1" />
-          <entry key="SQL" value="1" />
+          <entry key="SQL" value="144" />
           <entry key="Scratch" value="332" />
         </counts>
       </usages-collector>
@@ -113,38 +115,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quote/quote.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="32" column="19" lean-forward="true" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quote_category/category.model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="97" column="112" lean-forward="true" selection-start-line="97" selection-start-column="112" selection-end-line="97" selection-end-column="112" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/db.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
+        <entry file="file://$PROJECT_DIR$/quote_users/users.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="785" column="29" selection-start-line="785" selection-start-column="29" selection-end-line="785" selection-end-column="29" />
+            <state relative-caret-position="384">
+              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -178,6 +153,7 @@
       <find>var</find>
       <find>new_author</find>
       <find>flatma</find>
+      <find>ON UPDATE CURRENT_TIMESTAMP</find>
     </findStrings>
     <replaceStrings>
       <replace>a_name</replace>
@@ -189,6 +165,7 @@
       <replace>author</replace>
       <replace>Author</replace>
       <replace>let</replace>
+      <replace>NULL</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -197,8 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config.js" />
-        <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/users/users.routes.js" />
@@ -237,7 +212,6 @@
         <option value="$PROJECT_DIR$/routes/routes.public.js" />
         <option value="$PROJECT_DIR$/routes/routes.secured.js" />
         <option value="$PROJECT_DIR$/quote_users/users.controller.js" />
-        <option value="$PROJECT_DIR$/quote_users/users.model.js" />
         <option value="$PROJECT_DIR$/quote/quote.model.js" />
         <option value="$PROJECT_DIR$/quote_category/category.controller.js" />
         <option value="$PROJECT_DIR$/utils/util.js" />
@@ -248,6 +222,9 @@
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/model/db.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
+        <option value="$PROJECT_DIR$/utils/fetch.sql" />
+        <option value="$PROJECT_DIR$/utils/trigger_for_mysql_5.5.sql" />
+        <option value="$PROJECT_DIR$/quote_users/users.model.js" />
       </list>
     </option>
   </component>
@@ -293,12 +270,12 @@
             <path>
               <item name="QuoteWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="QuoteWS" type="462c0819:PsiDirectoryNode" />
-              <item name="quote" type="462c0819:PsiDirectoryNode" />
+              <item name="quote_users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QuoteWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="QuoteWS" type="462c0819:PsiDirectoryNode" />
-              <item name="quote_category" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -319,15 +296,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\utils" />
-      <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\config" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\model" />
       <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS" />
       <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\quote" />
       <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\quote_author" />
       <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\users" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\utils" />
+      <recent name="C:\Users\Soumaila\Pictures\EPSI I4\webservice\Project\QuoteWS\config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -383,12 +361,12 @@
       <workItem from="1542836355962" duration="52000" />
       <workItem from="1543103241413" duration="32743000" />
       <workItem from="1543258504083" duration="14928000" />
-      <workItem from="1543563424907" duration="15380000" />
+      <workItem from="1543563424907" duration="21365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158666000" />
+    <option name="totallyTimeSpent" value="164651000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -403,7 +381,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.82568806" visible="true" weight="0.16577181" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.82568806" visible="true" weight="0.16577181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.17431192" side_tool="true" visible="true" weight="0.16577181" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -423,7 +401,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.28053692" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.28053692" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,20 +411,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/quote_users/users.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quote_users/users.routes.secured.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/Connection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -710,13 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quote_users/users.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/routes.public.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -782,13 +739,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/nodemailer/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -815,15 +765,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="204">
+          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/trigger_for_mysql_5.5.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ws_quote_db_mysql_5.5.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3849" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="785" column="29" selection-start-line="785" selection-start-column="29" selection-end-line="785" selection-end-column="29" />
+        <state relative-caret-position="17">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quote_users/users.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>

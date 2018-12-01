@@ -14,8 +14,8 @@ var Users = function (users) {
 Users.createUser = function createUser(newUser, result) {
     //INSERT INTO u_user(u_name, u_email, u_password) VALUES (?,?,?)
   bcrypt.hash(newUser.password,saltRounds,function (err, hash) {
-      var insertValues = [newUser.name,newUser.email,hash];
-      sql.query("INSERT INTO u_user(u_name, u_email, u_password) VALUES (?)",[insertValues],function (err, res) {
+      //var insertValues = [newUser.name,newUser.email,hash];
+      sql.query("INSERT INTO u_user(u_name, u_email, u_password, u_create_date, u_last_update) VALUES (?,?,?,Now(),Now())",[newUser.name,newUser.email,hash],function (err, res) {
           if (err){
               console.log("error: ",err);
               result(err,null);
