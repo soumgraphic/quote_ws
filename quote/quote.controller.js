@@ -19,7 +19,7 @@ exports.create_a_quote = function (req, res) {
             message: 'Veuillez remplir les champs requis ',
         });
     } else {
-        let userId = new_quote.category_id;
+        let userId = new_quote.user_id;
         Users.getUserById(userId, function (err, user) {
             if (err) {
                 res.send(err);
@@ -28,7 +28,15 @@ exports.create_a_quote = function (req, res) {
                     if (err) {
                         res.send(err);
                     } else {
-                        console.log("Tout s'est bien passée 1, la catégorie est " + category.c_id);
+                        //console.log("Tout s'est bien passée 1, la catégorie est " + category.c_id);
+                        Author.searchAuthorByNameAndCreateIfNotExist(new_quote.author_name, function (err, author) {
+                            if (err) {
+                                res.send(err);
+                            } else {
+                                console.log("Tout s'est bien passée 1, la catégorie est " + category.c_id);
+                                console.log("Tout s'est bien passée 1, la catégorie est " + author.a_id);
+                            }
+                        });
                     }
                 });
             } else {

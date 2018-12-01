@@ -76,4 +76,30 @@ Author.searchAuthorByName = function (search,result){
     });
 };
 
+Author.searchAuthorByNameAndCreateIfNotExist = function (search,result){
+    sql.query("SELECT * FROM q_author WHERE a_name LIKE ? ","%" + search + "%",function (err,res) {
+        if (err){
+            console.log("error: ", err);
+            result(err,null);
+        } else {
+            if (res.length > 0){
+                result(null,res[0]);
+            } else {
+                sql.query("INSERT INTO q_author(a_name) VALUES (?)",search,function (err, res) {
+                    if (err){
+                        console.log("error: ",err);
+                        result(err,null);
+                    } else {
+                        console.log("Insertion effectuer avec succès, l'id de l'insertion est : ",res.insertId);
+                        let resFormatted = {
+                            a_id:res.insertId
+                        };
+                        result(null,resFormatted);
+                    }
+                });
+            }
+        }
+    });
+};
+
 module.exports = Author;
