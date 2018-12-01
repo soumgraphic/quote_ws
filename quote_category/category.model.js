@@ -8,7 +8,7 @@ var Category = function (category) {
 };
 
 Category.createCategory = function createCategory(newCategory, result) {
-    sql.query("INSERT INTO q_category(c_name) VALUES (?)",[newCategory.name],function (err, res) {
+    sql.query("INSERT INTO q_category(c_name,c_create_date,c_last_update) VALUES (?,Now(),Now())",[newCategory.name],function (err, res) {
         if (err){
             console.log("error: ",err);
             result(err,null);
@@ -43,7 +43,7 @@ Category.getAllCategories = function (result){
 };
 
 Category.updateCategoryById = function(catId,category,result){
-  sql.query("UPDATE q_category SET c_name = ? WHERE c_id = ?",[category.name,catId],function (err,res) {
+  sql.query("UPDATE q_category SET c_name = ?, c_last_update = Now() WHERE c_id = ?",[category.name,catId],function (err,res) {
       if (err){
           console.log("error: ", err);
           result(err,null);

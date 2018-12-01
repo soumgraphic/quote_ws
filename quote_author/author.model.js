@@ -8,7 +8,7 @@ var Author = function (author) {
 };
 
 Author.createAuthor = function createAuthor(newAuthor, result) {
-    sql.query("INSERT INTO q_author(a_name) VALUES (?)",[newAuthor.name],function (err, res) {
+    sql.query("INSERT INTO q_author(a_name, a_create_date, a_last_update) VALUES (?,Now(),Now())",[newAuthor.name],function (err, res) {
         if (err){
             console.log("error: ",err);
             result(err,null);
@@ -43,7 +43,7 @@ Author.getAllAuthors = function (result){
 };
 
 Author.updateAuthorById = function(authorId,author,result){
-  sql.query("UPDATE q_author SET a_name = ? WHERE a_id = ?",[author.name,authorId],function (err,res) {
+  sql.query("UPDATE q_author SET a_name = ?, a_last_update = Now() WHERE a_id = ?",[author.name,authorId],function (err,res) {
       if (err){
           console.log("error: ", err);
           result(err,null);

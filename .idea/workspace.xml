@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80f88c64-8659-40fe-adf7-931b520f7492" name="Default Changelist" comment="First quote git version">
-      <change afterPath="$PROJECT_DIR$/model/ws_quote_db_mysql_5.5.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dc2be032-d66a-4931-bc97-ff4dbfb70599.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dc2be032-d66a-4931-bc97-ff4dbfb70599.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quote_users/users.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_users/users.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quote/quote.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote/quote.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quote_author/author.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_author/author.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quote_category/category.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_category/category.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quote_tag/tag.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_tag/tag.model.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +48,7 @@
         <item name="ws_quote_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="ws_quote_db: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="u_user: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="q_quote: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -53,28 +57,30 @@
     <session id="-575526365">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="SCHEMA:ws_quote_db" value="1" />
-          <entry key="js" value="289" />
+          <entry key="gitignore" value="1" />
+          <entry key="js" value="296" />
           <entry key="json" value="15" />
           <entry key="pug" value="1" />
           <entry key="q_category" value="1" />
           <entry key="q_quote" value="1" />
-          <entry key="sql" value="5" />
+          <entry key="sql" value="7" />
           <entry key="ts" value="2" />
           <entry key="www" value="3" />
         </counts>
@@ -82,44 +88,101 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Database Element" value="1" />
+          <entry key="Git file" value="1" />
           <entry key="JSON" value="15" />
-          <entry key="JavaScript" value="292" />
+          <entry key="JavaScript" value="299" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="2" />
-          <entry key="Scratch" value="3" />
+          <entry key="Scratch" value="5" />
           <entry key="TypeScript" value="2" />
           <entry key="UML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="12101" />
+          <entry key="gitignore" value="5" />
+          <entry key="js" value="12174" />
           <entry key="json" value="112" />
-          <entry key="sql" value="475" />
+          <entry key="sql" value="503" />
           <entry key="txt" value="23" />
           <entry key="www" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="Git file" value="5" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="112" />
-          <entry key="JavaScript" value="12100" />
+          <entry key="JavaScript" value="12173" />
           <entry key="PLAIN_TEXT" value="23" />
           <entry key="RegExp" value="1" />
           <entry key="SQL" value="144" />
-          <entry key="Scratch" value="332" />
+          <entry key="Scratch" value="360" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quote/quote.model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quote_category/category.model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quote_users/users.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="170">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quote_author/author.model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="66" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -154,6 +217,7 @@
       <find>new_author</find>
       <find>flatma</find>
       <find>ON UPDATE CURRENT_TIMESTAMP</find>
+      <find>insert</find>
     </findStrings>
     <replaceStrings>
       <replace>a_name</replace>
@@ -174,7 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/users/users.routes.js" />
         <option value="$PROJECT_DIR$/routes/catalog.routes.secured.js" />
@@ -196,15 +259,12 @@
         <option value="$PROJECT_DIR$/quote_tag/tag.routes.js" />
         <option value="$PROJECT_DIR$/quote_tag/tag.routes.secured.js" />
         <option value="$PROJECT_DIR$/quote_category/category.routes.js" />
-        <option value="$PROJECT_DIR$/quote_author/author.model.js" />
         <option value="$PROJECT_DIR$/quote_author/author.controller.js" />
-        <option value="$PROJECT_DIR$/quote_tag/tag.model.js" />
         <option value="$PROJECT_DIR$/quote_tag/tag.controller.js" />
         <option value="$PROJECT_DIR$/quote_tag_with_quote/tag.model.js" />
         <option value="$PROJECT_DIR$/config/constants.js" />
         <option value="$PROJECT_DIR$/quote_tag_with_quote/quote.tag.routes.secured.js" />
         <option value="$PROJECT_DIR$/quote_tag_with_quote/quote.tag.routes.js" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console.sql" />
         <option value="$PROJECT_DIR$/quote_tag_with_quote/quote.tag.model.js" />
         <option value="$PROJECT_DIR$/quote_tag_with_quote/quote.tag.controller.js" />
         <option value="$PROJECT_DIR$/quote/quote.routes.js" />
@@ -212,10 +272,8 @@
         <option value="$PROJECT_DIR$/routes/routes.public.js" />
         <option value="$PROJECT_DIR$/routes/routes.secured.js" />
         <option value="$PROJECT_DIR$/quote_users/users.controller.js" />
-        <option value="$PROJECT_DIR$/quote/quote.model.js" />
         <option value="$PROJECT_DIR$/quote_category/category.controller.js" />
         <option value="$PROJECT_DIR$/utils/util.js" />
-        <option value="$PROJECT_DIR$/quote_category/category.model.js" />
         <option value="$PROJECT_DIR$/quote/quote.controller.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/utils/mail_sender.js" />
@@ -225,6 +283,12 @@
         <option value="$PROJECT_DIR$/utils/fetch.sql" />
         <option value="$PROJECT_DIR$/utils/trigger_for_mysql_5.5.sql" />
         <option value="$PROJECT_DIR$/quote_users/users.model.js" />
+        <option value="$PROJECT_DIR$/quote_tag/tag.model.js" />
+        <option value="$PROJECT_DIR$/quote_category/category.model.js" />
+        <option value="$PROJECT_DIR$/quote_author/author.model.js" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console.sql" />
+        <option value="$PROJECT_DIR$/quote/quote.model.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -265,7 +329,7 @@
             <path>
               <item name="QuoteWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="QuoteWS" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="quote" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QuoteWS" type="b2602c69:ProjectViewProjectNode" />
@@ -294,6 +358,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -361,12 +426,13 @@
       <workItem from="1542836355962" duration="52000" />
       <workItem from="1543103241413" duration="32743000" />
       <workItem from="1543258504083" duration="14928000" />
-      <workItem from="1543563424907" duration="21365000" />
+      <workItem from="1543563424907" duration="23504000" />
+      <workItem from="1543666413313" duration="257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164651000" />
+    <option name="totallyTimeSpent" value="167047000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -381,9 +447,9 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.82568806" visible="true" weight="0.16577181" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8238532" visible="true" weight="0.16577181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.17431192" side_tool="true" visible="true" weight="0.16577181" />
+      <window_info id="npm" order="2" sideWeight="0.17614679" side_tool="true" visible="true" weight="0.16577181" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.16879432" />
@@ -396,12 +462,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.22695035" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.4425532" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.22695035" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.30212766" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.28053692" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.28053692" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,20 +477,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/Connection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="501" column="9" selection-start-line="501" selection-start-column="9" selection-end-line="501" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/middlewares/TokenValidator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -541,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quote_author/author.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/quote_author/author.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -573,20 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quote_tag/tag.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -667,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quote_users/users.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/routes.public.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -685,13 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quote/quote.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -729,11 +746,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/nodemailer/lib/mail-composer/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8870">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-8870" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/nodemailer/package.json">
@@ -753,22 +766,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quote_category/category.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="97" column="112" lean-forward="true" selection-start-line="97" selection-start-column="112" selection-end-line="97" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -777,13 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/trigger_for_mysql_5.5.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/trigger_for_mysql_5.5.sql" />
     <entry file="file://$PROJECT_DIR$/model/ws_quote_db_mysql_5.5.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3849" />
@@ -796,10 +789,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quote_tag/tag.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-245">
+          <caret line="44" column="47" lean-forward="true" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quote_users/users.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quote/quote.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc2be032-d66a-4931-bc97-ff4dbfb70599/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quote_category/category.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quote_users/users.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quote_author/author.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="66" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
         </state>
       </provider>
     </entry>

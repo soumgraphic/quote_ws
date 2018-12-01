@@ -8,7 +8,7 @@ var Tag = function (tag) {
 };
 
 Tag.createTag = function createTag(newTag, result) {
-    sql.query("INSERT INTO q_tag(t_name) VALUES (?)",[newTag.name],function (err, res) {
+    sql.query("INSERT INTO q_tag(t_name,t_create_date,t_last_update) VALUES (?,Now(),Now())",[newTag.name],function (err, res) {
         if (err){
             console.log("error: ",err);
             result(err,null);
@@ -43,7 +43,7 @@ Tag.getAllTags = function (result){
 };
 
 Tag.updateTagById = function(tagId,tag,result){
-  sql.query("UPDATE q_tag SET t_name = ? WHERE t_id = ?",[tag.name,tagId],function (err,res) {
+  sql.query("UPDATE q_tag SET t_name = ?, t_last_update = Now() WHERE t_id = ?",[tag.name,tagId],function (err,res) {
       if (err){
           console.log("error: ", err);
           result(err,null);
