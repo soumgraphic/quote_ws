@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80f88c64-8659-40fe-adf7-931b520f7492" name="Default Changelist" comment="First quote git version">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dc2be032-d66a-4931-bc97-ff4dbfb70599.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dc2be032-d66a-4931-bc97-ff4dbfb70599.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quote/quote.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote/quote.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quote_author/author.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_author/author.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quote_category/category.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_category/category.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quote_tag/tag.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/quote_tag/tag.model.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +95,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="gitignore" value="5" />
+          <entry key="gitignore" value="13" />
           <entry key="js" value="12174" />
           <entry key="json" value="112" />
           <entry key="sql" value="503" />
@@ -110,7 +105,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Git file" value="5" />
+          <entry key="Git file" value="13" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="112" />
           <entry key="JavaScript" value="12173" />
@@ -136,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            <state relative-caret-position="257">
+              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -427,12 +422,12 @@
       <workItem from="1543103241413" duration="32743000" />
       <workItem from="1543258504083" duration="14928000" />
       <workItem from="1543563424907" duration="23504000" />
-      <workItem from="1543666413313" duration="257000" />
+      <workItem from="1543666413313" duration="728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167047000" />
+    <option name="totallyTimeSpent" value="167518000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,7 +442,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8238532" visible="true" weight="0.16577181" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8238532" visible="true" weight="0.16577181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.17614679" side_tool="true" visible="true" weight="0.16577181" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -462,7 +457,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.22695035" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.22695035" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.30212766" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -850,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        <state relative-caret-position="257">
+          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
         </state>
       </provider>
     </entry>
