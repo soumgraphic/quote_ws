@@ -7,7 +7,7 @@ var constants = require('../config/constants');
 exports.create_a_tag_with_quote = function (req, res) {
     var new_tag_quote = new QuoteTag(req.body);
 
-    if (!new_tag_quote.tag_id && !new_tag_quote.quote_id) {
+    if (!new_tag_quote.tag_id || !new_tag_quote.quote_id) {
         res.status(constants.HTTP_BAD_REQUEST).send({
             error: true,
             error_code: constants.EMPTY_FIELDS,

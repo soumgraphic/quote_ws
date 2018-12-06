@@ -14,7 +14,8 @@ var Quote = function (quote) {
 
 Quote.createQuote = function createQuote(newQuote, result) {
     //let quoteInsert = [newQuote.text,newQuote.author_id,newQuote.category_id,newQuote.user_id];
-    sql.query("INSERT INTO q_quote(q_text, q_author_a_id, q_category_c_id, u_user_u_id,q_create_date,q_last_update) VALUES (?,?,?,?,Now(),Now())",[quoteInsert],function (err, res) {
+    sql.query("INSERT INTO q_quote(q_text, q_author_a_id, q_category_c_id, u_user_u_id,q_create_date,q_last_update) VALUES (?,?,?,?,Now(),Now())",
+             [newQuote.text,newQuote.author_id,newQuote.category_id,newQuote.user_id],function (err, res) {
         if (err){
             console.log("error: ",err);
             result(err,null);

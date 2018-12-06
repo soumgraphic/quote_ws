@@ -63,5 +63,5 @@ typings/
 .next
 
 .idea/inspectionProfiles/
-public/images/
-public/javascripts/
+utils/brouillon.js
+utils/test.fonction.js

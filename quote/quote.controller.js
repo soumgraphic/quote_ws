@@ -12,7 +12,7 @@ let constants = require('../config/constants');
 //Si le tag, la catégorie ou l'auteur n'existe pas le créer automatiquement lors de la création du quote
 exports.create_a_quote = function (req, res) {
     let new_quote = new Quote(req.body);
-    if (!new_quote.user_id && !new_quote.category_name && !new_quote.author_id && !new_quote.text) {
+    if (!new_quote.user_id || !new_quote.category_name || !new_quote.author_name || !new_quote.text) {
         res.status(constants.HTTP_BAD_REQUEST).send({
             error: true,
             error_code: constants.EMPTY_FIELDS,
@@ -28,13 +28,31 @@ exports.create_a_quote = function (req, res) {
                     if (err) {
                         res.send(err);
                     } else {
-                        //console.log("Tout s'est bien passée 1, la catégorie est " + category.c_id);
                         Author.searchAuthorByNameAndCreateIfNotExist(new_quote.author_name, function (err, author) {
                             if (err) {
                                 res.send(err);
                             } else {
+                                new_quote.category_id = category.c_id;
+                                new_quote.author_id = author.a_id;
+                                Quote.createQuote(new_quote,function (err, quote) {
+                                    if (err) {
+                                        res.send(err);
+                                    } else {
+                                        //Si des tags sont renseignés
+                                        if (req.body.tags_list.length){
+                                            createTagsAndAddAllInQuote(quote,req.body.tags_list);
+                                        }
+                                        res.status(constants.HTTP_CREATED).json({
+                                            error: false,
+                                            error_code: constants.SUCCESSFULLY_COMPLETED,
+                                            message: 'Création du quote effectuer avec succès ! ',
+                                            quote
+                                        });
+                                    }
+                                });
                                 console.log("Tout s'est bien passée 1, la catégorie est " + category.c_id);
-                                console.log("Tout s'est bien passée 1, la catégorie est " + author.a_id);
+                                console.log("Tout s'est bien passée 1, l'auteur est " + author.a_id);
+                                //console.log(req.body.fruits);
                             }
                         });
                     }
@@ -74,7 +92,74 @@ function checkCategorieExist(category,req,res){
     }
 }
 
+function createTagsAndAddAllInQuote(quoteId, tags_list) {
+
+    for (let item of tags_list) {
+        //let new_tag = `{"name": "${item}"}`;
+        //Si le nom du tag n'est pas vide
+        if (item) {
+            Tag.searchTagByNameAndCreateIfNotExist(item, function (err, tag) {
+                if (err) {
+                    console.log(err);
+                } else {
+
+                    let quote_id = {quote_id: quoteId};
+                    let tag_id = {tag_id: tag.t_id};
+
+                    let quote_tags = Object.assign(quote_id, tag_id);
+                    let new_tag_quote = new TagWithQuote(quote_tags);
+
+                    console.log(new_tag_quote);
+                    console.log("Le tag " + item + " a comme id " + tag.t_id);
+
+                    TagWithQuote.createQuoteTag(new_tag_quote, function (err, tag_quote) {
+                        if (err) {
+                            //Si une erreur de duplication de donnée est retourner on le gère comme sa
+                            if (err.code === 'ER_DUP_ENTRY') {
+                                console.log("Le tag " + new_tag_quote.tag_id + " est déjà ajouter au quote " + new_tag_quote.quote_id);
+                            } else {
+                                console.log(err);
+                            }
+                        } else {
+                            console.log('Ajout effectuer avec succès du tag ' + new_tag_quote.tag_id + ' au quote ' + new_tag_quote.quote_id)
+                        }
+                    });
+
+                }
+            });
+
+        }
+    }
+
+}
+
 /*
+function insertQuoteTag() {
+    TagWithQuote.createQuoteTag(new_tag_quote, function (err, tag_quote) {
+        if (err) {
+            //Si une erreur de duplication de donnée est retourner on le gère comme sa
+            if (err.code === 'ER_DUP_ENTRY'){
+                res.status(constants.HTTP_BAD_REQUEST).json({
+                    error: true,
+                    error_code: constants.DATA_DUPLICATE,
+                    message: 'Le tag ' + new_tag_quote.tag_id + ' est déjà ajouter au quote ' + new_tag_quote.quote_id,
+                });
+            }else {
+                res.send(err);
+            }
+            //
+        } else {
+            res.status(constants.HTTP_CREATED).json({
+                error: false,
+                error_code: constants.SUCCESSFULLY_COMPLETED,
+                message: 'Ajout effectuer avec succès du tag ' + new_tag_quote.tag_id + ' au quote ' + new_tag_quote.quote_id,
+                tag_quote
+            });
+        }
+    });
+}
+
+
 exports.get_a_author = function (req, res) {
     Author.getAuthorById(req.params.authorId, function (err, author) {
         if (err) {

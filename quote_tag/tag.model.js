@@ -76,4 +76,30 @@ Tag.searchTagByName = function (search,result){
     });
 };
 
+Tag.searchTagByNameAndCreateIfNotExist = function (search,result){
+    sql.query("SELECT * FROM q_tag WHERE t_name LIKE ? ","%" + search + "%",function (err,res) {
+        if (err){
+            console.log("error: ", err);
+            result(err,null);
+        } else {
+            if (res.length > 0){
+                result(null,res[0]);
+            } else {
+                sql.query("INSERT INTO q_tag(t_name) VALUES (?)",search,function (err, res) {
+                    if (err){
+                        console.log("error: ",err);
+                        result(err,null);
+                    } else {
+                        console.log("Insertion effectuer avec succès, l'id de l'insertion est : ",res.insertId);
+                        let resFormatted = {
+                            t_id:res.insertId
+                        };
+                        result(null,resFormatted);
+                    }
+                });
+            }
+        }
+    });
+};
+
 module.exports = Tag;
