@@ -12,7 +12,7 @@ let Quote = function (quote) {
     this.author_name = quote.author_name;
 };
 
-//Création d'un quote
+//Fonction de Création d'un quote mysql
 
 Quote.createQuote = function createQuote(newQuote, result) {
     //let quoteInsert = [newQuote.text,newQuote.author_id,newQuote.category_id,newQuote.user_id];
