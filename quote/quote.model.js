@@ -1,9 +1,9 @@
 'use strict';
 
-var sql = require('../model/db');
+let sql = require('../model/db');
 
 //Author Constructor
-var Quote = function (quote) {
+let Quote = function (quote) {
     this.text = quote.text;
     this.author_id = quote.author_id;
     this.category_id = quote.category_id;
@@ -11,6 +11,8 @@ var Quote = function (quote) {
     this.category_name = quote.category_name;
     this.author_name = quote.author_name;
 };
+
+//Création d'un quote
 
 Quote.createQuote = function createQuote(newQuote, result) {
     //let quoteInsert = [newQuote.text,newQuote.author_id,newQuote.category_id,newQuote.user_id];
