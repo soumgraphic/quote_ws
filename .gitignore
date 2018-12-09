@@ -63,5 +63,6 @@ typings/
 .next
 
 .idea/inspectionProfiles/
+.idea/workspace.xml
 utils/brouillon.js
 utils/test.fonction.js
