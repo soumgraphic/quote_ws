@@ -1,16 +1,15 @@
 'use strict';
-var constants = require('../config/constants');
+let constants = require('../config/constants');
 
 module.exports = function (app) {
-    var quote = require('./quote.controller');
+    let quote = require('./quote.controller');
 
-    /*
+
     //Pour mettre la version de l'api app.route(constants.API_VERSION + '/author/:authorId')
-    app.route('/author/:authorId')
-        .get(author.get_a_author);
+    app.route('/quote/:quoteId')
+        .get(quote.get_a_quote);
 
-    app.route('/author/')
-        .get(author.get_all_author);
+    app.route('/quote/')
+        .get(quote.get_all_quotes);
 
-        */
 };

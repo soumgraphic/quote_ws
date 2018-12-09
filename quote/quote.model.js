@@ -28,6 +28,29 @@ Quote.createQuote = function createQuote(newQuote, result) {
     });
 };
 
+Quote.getQuoteById = function (quoteId,result){
+    sql.query("SELECT * FROM q_quote WHERE q_id = ?",quoteId,function (err,res) {
+        if (err){
+            console.log("error: ", err);
+            result(err,null);
+        } else {
+            result(null,res);
+        }
+    });
+};
+
+Quote.getAllQuotes = function (result){
+    sql.query("SELECT * FROM q_quote",function (err,res) {
+        if (err){
+            console.log("error: ", err);
+            result(err,null);
+        } else {
+            console.log(" All Authors: ", res);
+            result(null,res);
+        }
+    });
+};
+
 /*
 
 Author.getAuthorById = function (authorId,result){

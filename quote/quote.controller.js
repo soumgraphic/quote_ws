@@ -69,6 +69,141 @@ exports.create_a_quote = function (req, res) {
     }
 };
 
+exports.get_a_quote = function (req, res) {
+    Quote.getQuoteById(req.params.quoteId, function (err, quote) {
+        if (err) {
+            res.send(err);
+        } else if (quote.length) {
+            Author.getAuthorById(quote[0].q_author_a_id, function (err, author) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    Category.getCategorieById(quote[0].q_category_c_id, function (err, category) {
+                        if (err) {
+                            res.send(err);
+                        } else {
+                            TagWithQuote.getQuoteTagByQuoteId(quote[0].q_id, function (err, quote_tags) {
+                                if (err) {
+                                    res.send(err);
+                                } else {
+                                    res.json({
+                                        error: false,
+                                        error_code: constants.SUCCESSFULLY_COMPLETED,
+                                        message: 'Quote retrouver avec succès ',
+                                        number_of_results: quote.length,
+                                        //Todo: quote: [quote, author],
+                                        quote_details: {
+                                            quote,
+                                            author,
+                                            category,
+                                            quote_tags
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        } else {
+            res.status(constants.HTTP_NOT_FOUND).json({
+                error: false,
+                error_code: constants.NO_VALUE_FOUND,
+                message: 'Quote non trouvé dans la Base de données ',
+                quote
+            });
+        }
+    });
+};
+
+exports.get_all_quotes = function (req, res) {
+    Quote.getAllQuotes(function (err, quote) {
+        if (err) {
+            res.send(err);
+        } else if (quote.length) {
+            console.log("Number of results : " + quote.length);
+            res.json({
+                error: false,
+                error_code: constants.SUCCESSFULLY_COMPLETED,
+                message: 'Quote retrouver avec succès ',
+                number_of_results: quote.length,
+                //Todo: quote: [quote, author],
+                 quote_details: {
+                 quote,
+                 }
+            });
+        } else {
+            res.status(constants.HTTP_NOT_FOUND).json({
+                error: false,
+                error_code: constants.NO_VALUE_FOUND,
+                message: 'Aucun quote trouvé dans la Base de données ',
+                quote
+            });
+        }
+    });
+};
+
+// A voir plutard !
+/*
+exports.get_all_quotes = function (req, res) {
+    Quote.getAllQuotes(function (err, quote) {
+        if (err) {
+            res.send(err);
+        } else if (quote.length) {
+            console.log("Number of results : " + quote.length);
+            let listeQuoteWithAuthorCategoryAndtags = [];
+            for (let i = 0; i < quote.length; i++){
+                Author.getAuthorById(quote[i].q_author_a_id, function (err, author) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        Category.getCategorieById(quote[i].q_category_c_id, function (err, category) {
+                            if (err) {
+                                res.send(err);
+                            } else {
+                                TagWithQuote.getQuoteTagByQuoteId(quote[i].q_id, function (err, quote_tags) {
+                                    if (err) {
+                                        res.send(err);
+                                    } else {
+                                        listeQuoteWithAuthorCategoryAndtags.push([quote,author,category,quote_tags]);
+                                        console.log(listeQuoteWithAuthorCategoryAndtags);
+                                        //listeQuoteWithAuthorCategoryAndtags[[quote,author,category,quote_tags]]
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            res.json({
+                error: false,
+                error_code: constants.SUCCESSFULLY_COMPLETED,
+                message: 'Quote retrouver avec succès ',
+                number_of_results: quote.length,
+                listeQuoteWithAuthorCategoryAndtags
+                //Todo: quote: [quote, author],
+
+                quote_details: {
+                    quote,
+                    author,
+                    category,
+                    quote_tags
+                }
+
+            });
+        } else {
+            res.status(constants.HTTP_NOT_FOUND).json({
+                error: false,
+                error_code: constants.NO_VALUE_FOUND,
+                message: 'Aucun quote trouvé dans la Base de données ',
+                quote
+            });
+        }
+    });
+};
+
+*/
+
 function checkCategorieExist(category,req,res){
     if (category.name) {
         Category.searchCategorieByName(category.name, function (err, category) {
@@ -132,6 +267,7 @@ function createTagsAndAddAllInQuote(quoteId, tags_list) {
     }
 
 }
+
 
 /*
 function insertQuoteTag() {
