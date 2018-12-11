@@ -51,30 +51,18 @@ Quote.getAllQuotes = function (result){
     });
 };
 
-/*
-
-Author.getAuthorById = function (authorId,result){
-  sql.query("SELECT * FROM q_author WHERE a_id = ?",authorId,function (err,res) {
-      if (err){
-          console.log("error: ", err);
-          result(err,null);
-      } else {
-          result(null,res);
-      }
-  });
-};
-
-Author.getAllAuthors = function (result){
-    sql.query("SELECT * FROM q_author",function (err,res) {
+Quote.removeQuoteById = function (quoteId, result) {
+    sql.query("DELETE FROM q_quote WHERE q_id = ?",quoteId,function (err,res) {
         if (err){
             console.log("error: ", err);
             result(err,null);
         } else {
-            console.log(" All Authors: ", res);
             result(null,res);
         }
     });
 };
+
+/*
 
 Author.updateAuthorById = function(authorId,author,result){
   sql.query("UPDATE q_author SET a_name = ? WHERE a_id = ?",[author.name,authorId],function (err,res) {

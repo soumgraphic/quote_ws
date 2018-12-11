@@ -1,10 +1,13 @@
 'use strict';
 
 module.exports = function (app) {
-    var quote = require('./quote.controller');
+    let quote = require('./quote.controller');
 
     app.route('/quote')
         .post(quote.create_a_quote);
+
+     app.route('/quote/:quoteId')
+     .delete(quote.delete_a_quote);
 
 /*
 app.route('/author/:authorId')

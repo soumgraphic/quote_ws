@@ -8,6 +8,13 @@ let Tag = require('../quote_tag/tag.model');
 let TagWithQuote = require('../quote_tag_with_quote/quote.tag.model');
 let constants = require('../config/constants');
 
+let QuoteDetails = function(quote,category,author,tagWithQuote){
+  this.quote = quote,
+      this.category = category,
+      this.author = author,
+      this.tagWithQuote = tagWithQuote
+};
+
 //Ajout des tags au quote, verification d'existence user,category,auteur
 //Si le tag, la catégorie ou l'auteur n'existe pas le créer automatiquement lors de la création du quote
 exports.create_a_quote = function (req, res) {
@@ -69,6 +76,7 @@ exports.create_a_quote = function (req, res) {
     }
 };
 
+
 exports.get_a_quote = function (req, res) {
     Quote.getQuoteById(req.params.quoteId, function (err, quote) {
         if (err) {
@@ -92,7 +100,7 @@ exports.get_a_quote = function (req, res) {
                                         message: 'Quote retrouver avec succès ',
                                         number_of_results: quote.length,
                                         //Todo: quote: [quote, author],
-                                        quote_details: {
+                                        results: {
                                             quote,
                                             author,
                                             category,
@@ -121,18 +129,18 @@ exports.get_all_quotes = function (req, res) {
         if (err) {
             res.send(err);
         } else if (quote.length) {
-            console.log("Number of results : " + quote.length);
             res.json({
                 error: false,
                 error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Quote retrouver avec succès ',
+                message: 'Les quotes ont été retrouver avec succès ',
                 number_of_results: quote.length,
                 //Todo: quote: [quote, author],
-                 quote_details: {
-                 quote,
-                 }
+                results: {
+                    quote
+                }
             });
         } else {
+
             res.status(constants.HTTP_NOT_FOUND).json({
                 error: false,
                 error_code: constants.NO_VALUE_FOUND,
@@ -143,89 +151,33 @@ exports.get_all_quotes = function (req, res) {
     });
 };
 
-// A voir plutard !
-/*
-exports.get_all_quotes = function (req, res) {
-    Quote.getAllQuotes(function (err, quote) {
+exports.delete_a_quote = function (req, res) {
+    Quote.getQuoteById(req.params.quoteId, function (err, getQuote) {
         if (err) {
             res.send(err);
-        } else if (quote.length) {
-            console.log("Number of results : " + quote.length);
-            let listeQuoteWithAuthorCategoryAndtags = [];
-            for (let i = 0; i < quote.length; i++){
-                Author.getAuthorById(quote[i].q_author_a_id, function (err, author) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        Category.getCategorieById(quote[i].q_category_c_id, function (err, category) {
-                            if (err) {
-                                res.send(err);
-                            } else {
-                                TagWithQuote.getQuoteTagByQuoteId(quote[i].q_id, function (err, quote_tags) {
-                                    if (err) {
-                                        res.send(err);
-                                    } else {
-                                        listeQuoteWithAuthorCategoryAndtags.push([quote,author,category,quote_tags]);
-                                        console.log(listeQuoteWithAuthorCategoryAndtags);
-                                        //listeQuoteWithAuthorCategoryAndtags[[quote,author,category,quote_tags]]
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-            res.json({
-                error: false,
-                error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Quote retrouver avec succès ',
-                number_of_results: quote.length,
-                listeQuoteWithAuthorCategoryAndtags
-                //Todo: quote: [quote, author],
-
-                quote_details: {
-                    quote,
-                    author,
-                    category,
-                    quote_tags
+        } else if (getQuote.length) {
+            Quote.removeQuoteById(req.params.quoteId, function (err,quote) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.json({
+                        error: false,
+                        error_code: constants.SUCCESSFULLY_COMPLETED,
+                        message: 'Le quote a été supprimé avec succès !'
+                    });
                 }
-
             });
         } else {
             res.status(constants.HTTP_NOT_FOUND).json({
                 error: false,
                 error_code: constants.NO_VALUE_FOUND,
-                message: 'Aucun quote trouvé dans la Base de données ',
-                quote
+                message: 'Ce quote n\'existe pas dans la Base de données, impossible de la supprimer '
             });
         }
     });
 };
 
-*/
-
-function checkCategorieExist(category,req,res){
-    if (category.name) {
-        Category.searchCategorieByName(category.name, function (err, category) {
-            if (err) {
-                res.send(err);
-            } else if (category.length > 0) {
-                console.log("Catégorie retrouver " + category);
-                return category;
-            } else {
-                let new_category = new Category(category);
-                Category.createCategory(new_category, function (err, categoryCreated) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        console.log("Catégorie créer " + categoryCreated);
-                        return categoryCreated
-                    }
-                });
-            }
-        });
-    }
-}
+// Function utilities
 
 function createTagsAndAddAllInQuote(quoteId, tags_list) {
 
@@ -270,139 +222,48 @@ function createTagsAndAddAllInQuote(quoteId, tags_list) {
 
 
 /*
-function insertQuoteTag() {
-    TagWithQuote.createQuoteTag(new_tag_quote, function (err, tag_quote) {
-        if (err) {
-            //Si une erreur de duplication de donnée est retourner on le gère comme sa
-            if (err.code === 'ER_DUP_ENTRY'){
-                res.status(constants.HTTP_BAD_REQUEST).json({
-                    error: true,
-                    error_code: constants.DATA_DUPLICATE,
-                    message: 'Le tag ' + new_tag_quote.tag_id + ' est déjà ajouter au quote ' + new_tag_quote.quote_id,
-                });
-            }else {
-                res.send(err);
-            }
-            //
-        } else {
-            res.status(constants.HTTP_CREATED).json({
-                error: false,
-                error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Ajout effectuer avec succès du tag ' + new_tag_quote.tag_id + ' au quote ' + new_tag_quote.quote_id,
-                tag_quote
-            });
-        }
-    });
-}
 
+ exports.get_all_quotes = function (req, res) {
+ Quote.getAllQuotes(function (err, quote) {
+ if (err) {
+ res.send(err);
+ } else if (quote.length) {
 
-exports.get_a_author = function (req, res) {
-    Author.getAuthorById(req.params.authorId, function (err, author) {
-        if (err) {
-            res.send(err);
-        } else if (author.length > 0) {
-            res.json({
-                error: false,
-                error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Auteur retrouver avec succès ',
-                author
-            });
-        } else {
-            res.status(constants.HTTP_NOT_FOUND).json({
-                error: false,
-                error_code: constants.NO_VALUE_FOUND,
-                message: 'Auteur non trouvé dans la Base de données ',
-                author
-            });
-        }
-    });
-};
+ quote.forEach(function (q) {
+ Author.getAuthorById(q.q_author_a_id, function (err, author) {
+ if (err) {
+ res.send(err);
+ } else {
+ Category.getCategorieById(q.q_category_c_id, function (err, category) {
+ if (err) {
+ res.send(err);
+ } else {
+ TagWithQuote.getQuoteTagByQuoteId(q.q_id, function (err, quote_tags) {
+ if (err) {
+ res.send(err);
+ } else {
+ res.setHeader('Content-Type', 'application/json');
+ res.write(q, author, category, quote_tags);
+ }
+ });
+ }
+ });
+ }
+ });
+ });
 
-exports.get_all_author = function (req, res) {
-    Author.getAllAuthors(function (err, author) {
-        if (err) {
-            res.send(err);
-        } else if (author.length > 0) {
-            res.json({
-                error: false,
-                error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Les auteurs ont été retrouver avec succès ',
-                author
-            });
-        } else {
-            res.status(constants.HTTP_NOT_FOUND).json({
-                error: false,
-                error_code: constants.NO_VALUE_FOUND,
-                message: 'Aucun auteur trouvé dans la Base de données ',
-                author
-            });
-        }
-    });
-};
+ res.end();
 
-exports.update_a_author = function (req, res) {
+ } else {
 
-    var update_author = new Author(req.body);
-    //Réflechir à comment faire trim sur name
-    if (!update_author.name) {
-        res.status(constants.HTTP_BAD_REQUEST).send({
-            error: true,
-            error_code: constants.EMPTY_FIELDS,
-            message: 'Veuillez remplir le champ nom de l\'auteur '
-        });
-    } else {
-        Author.getAuthorById(req.params.authorId, function (err, get_author) { // On vérifie d'abord si l'auteur existe
-            if (err) {
-                res.send(err);
-            } else if (get_author.length > 0) { //Si l'auteur existe dans la base
-                Author.updateAuthorById(req.params.authorId, update_author, function (err, author) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.json({
-                            error: false,
-                            error_code: constants.SUCCESSFULLY_COMPLETED,
-                            message: 'L\'auteur ' + get_author[0].a_name + ' a bien été renommer en ' + update_author.name
-                        });
-                    }
-                });
+ res.status(constants.HTTP_NOT_FOUND).json({
+ error: false,
+ error_code: constants.NO_VALUE_FOUND,
+ message: 'Aucun quote trouvé dans la Base de données ',
+ quote
+ });
+ }
+ });
+ };
 
-            } else {
-                res.status(constants.HTTP_NOT_FOUND).json({
-                    error: false,
-                    error_code: constants.NO_VALUE_FOUND,
-                    message: 'Cet auteur n\'existe pas dans la Base de données, impossible de la modifier ',
-                });
-            }
-        });
-    }
-
-};
-
-exports.delete_a_author = function (req, res) {
-    Author.getAuthorById(req.params.authorId, function (err, getAuthor) {
-        if (err) {
-            res.send(err);
-        } else if (getAuthor.length > 0) {
-            Author.removeAuthorById(req.params.authorId, function (err,author) {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.json({
-                        error: false,
-                        error_code: constants.SUCCESSFULLY_COMPLETED,
-                        message: 'L\'auteur a été supprimé avec succès !'
-                    });
-                }
-            });
-        } else {
-            res.status(constants.HTTP_NOT_FOUND).json({
-                error: false,
-                error_code: constants.NO_VALUE_FOUND,
-                message: 'Ce auteur n\'existe pas dans la Base de données, impossible de la supprimer '
-            });
-        }
-    });
-};
-
-*/
+ */
