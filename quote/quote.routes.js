@@ -12,4 +12,7 @@ module.exports = function (app) {
     app.route(constants.API_VERSION + '/quotes/')
         .get(quote.get_all_quotes);
 
+    app.route(constants.API_VERSION + '/tags/:tag_id/quotes')
+        .get(quote.get_quote_all_tags);
+
 };

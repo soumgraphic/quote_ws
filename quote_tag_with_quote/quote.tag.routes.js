@@ -8,9 +8,6 @@ module.exports = function (app) {
     app.route(constants.API_VERSION + '/quotes/:quote_id/tags')
         .get(tag_quote.get_quote_all_tags);
 
-    app.route(constants.API_VERSION + '/tags/:tag_id/quotes')
-        .get(tag_quote.get_tag_all_quotes);
-
     /*
    app.route('/tag/')
        .get(tag.get_all_tag);

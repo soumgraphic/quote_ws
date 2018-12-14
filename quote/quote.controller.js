@@ -165,6 +165,59 @@ exports.get_all_quotes = function (req, res) {
     });
 };
 
+exports.get_quote_all_tags = function (req, res) {
+    let tag_id = req.params.tag_id;
+    //Vérifie d'abord si le tag existe
+    Tag.getTagById(tag_id,function (err, tag) {
+        if (err) {
+            res.send(err);
+        } else if (tag) {
+            TagWithQuote.getQuoteTagByTagId(req.params.tag_id, function (err, tag_quotes) {
+                if (err) {
+                    res.send(err);
+                } else if (tag_quotes.length > 0) {
+                    const promises = [];
+                    tag_quotes.forEach(function (quote) {
+                        try {
+                            promises.push(getQuoteAndElements(quote.q_id));
+                        }catch (e) {
+                            console.error(e.message)
+                        }
+                    });
+                    Promise.all(promises).then(function(values){
+                        res.json({
+                            error: false,
+                            error_code: constants.SUCCESSFULLY_COMPLETED,
+                            message: 'Quote pour le tag ' + req.params.tag_id + ' retrouver avec succès ',
+                            number_of_results: values.length,
+                            //Todo: quote: [quote, author],
+                            results:
+                            values
+                        }).catch(err => {
+                            res.send(err);
+                            console.log(err);
+                        });
+                    });
+                } else {
+                    res.status(constants.HTTP_NOT_FOUND).json({
+                        error: false,
+                        error_code: constants.NO_VALUE_FOUND,
+                        message: 'Aucun Quote trouvé pour le tag ' + req.params.tag_id,
+                        tag_quotes
+                    });
+                }
+            });
+        } else {
+            res.status(constants.HTTP_NOT_FOUND).json({
+                error: false,
+                error_code: constants.NO_VALUE_FOUND,
+                message: 'Le Tag ' + tag_id + ' n\'existe pas dans la Base de données',
+                tag
+            });
+        }
+    });
+};
+
 exports.delete_a_quote = function (req, res) {
     Quote.getQuoteById(req.params.quoteId, function (err, getQuote) {
         if (err) {
