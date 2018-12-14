@@ -23,7 +23,14 @@ exports.create_a_tag_with_quote = function (req, res) {
                         error_code: constants.DATA_DUPLICATE,
                         message: 'Le tag ' + new_tag_quote.tag_id + ' est déjà ajouter au quote ' + new_tag_quote.quote_id,
                     });
-                }else {
+                }else if (err.code === 'ER_NO_REFERENCED_ROW_2'){
+                    res.status(constants.HTTP_BAD_REQUEST).json({
+                        error: true,
+                        error_code: constants.KEY_ID_NOT_FOUND,
+                        message: 'L\'id du tag ' + new_tag_quote.tag_id + ' ou l\'id du quote ' + new_tag_quote.quote_id + ' n\'existe pas !',
+                    });
+                }
+                else {
                     res.send(err);
                 }
                 //
@@ -69,7 +76,7 @@ exports.get_tag_all_quotes = function (req, res) {
     Tag.getTagById(tag_id,function (err, tag) {
         if (err) {
             res.send(err);
-        } else if (tag.length > 0) {
+        } else if (tag) {
             QuoteTag.getQuoteTagByTagId(req.params.tag_id, function (err, tag_quotes) {
                 if (err) {
                     res.send(err);

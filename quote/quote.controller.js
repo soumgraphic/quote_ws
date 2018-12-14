@@ -169,7 +169,7 @@ exports.delete_a_quote = function (req, res) {
     Quote.getQuoteById(req.params.quoteId, function (err, getQuote) {
         if (err) {
             res.send(err);
-        } else if (getQuote.length) {
+        } else if (getQuote) {
             Quote.removeQuoteById(req.params.quoteId, function (err,quote) {
                 if (err) {
                     res.send(err);
@@ -267,51 +267,3 @@ function getQuoteAndElements(quoteId) {
         }
     });
 }
-
-
-/*
-
- exports.get_all_quotes = function (req, res) {
- Quote.getAllQuotes(function (err, quote) {
- if (err) {
- res.send(err);
- } else if (quote.length) {
-
- quote.forEach(function (q) {
- Author.getAuthorById(q.q_author_a_id, function (err, author) {
- if (err) {
- res.send(err);
- } else {
- Category.getCategorieById(q.q_category_c_id, function (err, category) {
- if (err) {
- res.send(err);
- } else {
- TagWithQuote.getQuoteTagByQuoteId(q.q_id, function (err, quote_tags) {
- if (err) {
- res.send(err);
- } else {
- res.setHeader('Content-Type', 'application/json');
- res.write(q, author, category, quote_tags);
- }
- });
- }
- });
- }
- });
- });
-
- res.end();
-
- } else {
-
- res.status(constants.HTTP_NOT_FOUND).json({
- error: false,
- error_code: constants.NO_VALUE_FOUND,
- message: 'Aucun quote trouvé dans la Base de données ',
- quote
- });
- }
- });
- };
-
- */

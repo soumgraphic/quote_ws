@@ -33,7 +33,7 @@ exports.get_a_author = function (req, res) {
     Author.getAuthorById(req.params.authorId, function (err, author) {
         if (err) {
             res.send(err);
-        } else if (author.length > 0) {
+        } else if (author) {
             res.json({
                 error: false,
                 error_code: constants.SUCCESSFULLY_COMPLETED,
@@ -112,7 +112,7 @@ exports.update_a_author = function (req, res) {
         Author.getAuthorById(req.params.authorId, function (err, get_author) { // On vérifie d'abord si l'auteur existe
             if (err) {
                 res.send(err);
-            } else if (get_author.length > 0) { //Si l'auteur existe dans la base
+            } else if (get_author) { //Si l'auteur existe dans la base
                 Author.updateAuthorById(req.params.authorId, update_author, function (err, author) {
                     if (err) {
                         res.send(err);
@@ -120,7 +120,7 @@ exports.update_a_author = function (req, res) {
                         res.json({
                             error: false,
                             error_code: constants.SUCCESSFULLY_COMPLETED,
-                            message: 'L\'auteur ' + get_author[0].a_name + ' a bien été renommer en ' + update_author.name
+                            message: 'L\'auteur ' + get_author.a_name + ' a bien été renommer en ' + update_author.name
                         });
                     }
                 });
@@ -141,7 +141,7 @@ exports.delete_a_author = function (req, res) {
     Author.getAuthorById(req.params.authorId, function (err, getAuthor) {
         if (err) {
             res.send(err);
-        } else if (getAuthor.length > 0) {
+        } else if (getAuthor) {
             Author.removeAuthorById(req.params.authorId, function (err,author) {
                 if (err) {
                     res.send(err);

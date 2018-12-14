@@ -5,10 +5,10 @@ module.exports = function (app) {
     let tag_quote = require('./quote.tag.controller');
 
     //Pour mettre la version de l'api app.route(constants.API_VERSION + '/tag/:tagId')
-    app.route(constants.API_VERSION + '/tag-quote/quotes/:quote_id')
+    app.route(constants.API_VERSION + '/quotes/:quote_id/tags')
         .get(tag_quote.get_quote_all_tags);
 
-    app.route(constants.API_VERSION + '/tag-quote/tags/:tag_id')
+    app.route(constants.API_VERSION + '/tags/:tag_id/quotes')
         .get(tag_quote.get_tag_all_quotes);
 
     /*

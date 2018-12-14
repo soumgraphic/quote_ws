@@ -25,7 +25,7 @@ Tag.getTagById = function (tagId,result){
           console.log("error: ", err);
           result(err,null);
       } else {
-          result(null,res);
+          result(null,res[0]);
       }
   });
 };

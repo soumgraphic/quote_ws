@@ -33,7 +33,7 @@ exports.get_a_tag = function (req, res) {
     Tag.getTagById(req.params.tagId, function (err, tag) {
         if (err) {
             res.send(err);
-        } else if (tag.length > 0) {
+        } else if (tag) {
             res.json({
                 error: false,
                 error_code: constants.SUCCESSFULLY_COMPLETED,
@@ -112,7 +112,7 @@ exports.update_a_tag = function (req, res) {
         Tag.getTagById(req.params.tagId, function (err, get_tag) { // On vérifie d'abord si le tag existe
             if (err) {
                 res.send(err);
-            } else if (get_tag.length > 0) { //Si le tag existe dans la base
+            } else if (get_tag) { //Si le tag existe dans la base
                 Tag.updateTagById(req.params.tagId, update_tag, function (err, tag) {
                     if (err) {
                         res.send(err);
@@ -120,7 +120,7 @@ exports.update_a_tag = function (req, res) {
                         res.json({
                             error: false,
                             error_code: constants.SUCCESSFULLY_COMPLETED,
-                            message: 'Le tag ' + get_tag[0].t_name + ' a bien été renommer en ' + update_tag.name
+                            message: 'Le tag ' + get_tag.t_name + ' a bien été renommer en ' + update_tag.name
                         });
                     }
                 });
@@ -141,7 +141,7 @@ exports.delete_a_tag = function (req, res) {
     Tag.getTagById(req.params.tagId, function (err, getTag) {
         if (err) {
             res.send(err);
-        } else if (getTag.length > 0) {
+        } else if (getTag) {
             Tag.removeTagById(req.params.tagId, function (err,tag) {
                 if (err) {
                     res.send(err);

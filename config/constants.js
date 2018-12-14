@@ -9,6 +9,7 @@ module.exports = {
     INCORRECT_PASSWORD: 50,
     EMAIL_ALREADY_EXISTS: 55,
     DATA_DUPLICATE: 60,
+    KEY_ID_NOT_FOUND: 65,
 
     //HTTP VERBS
     HTTP_OK: 200,
