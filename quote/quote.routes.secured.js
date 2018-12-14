@@ -1,12 +1,14 @@
 'use strict';
 
+let constants = require('../config/constants');
+
 module.exports = function (app) {
     let quote = require('./quote.controller');
 
-    app.route('/quote')
+    app.route(constants.API_VERSION + '/quotes')
         .post(quote.create_a_quote);
 
-     app.route('/quote/:quoteId')
+     app.route(constants.API_VERSION + '/quotes/:quoteId')
      .delete(quote.delete_a_quote);
 
 /*

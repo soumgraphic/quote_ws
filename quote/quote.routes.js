@@ -6,10 +6,10 @@ module.exports = function (app) {
 
 
     //Pour mettre la version de l'api app.route(constants.API_VERSION + '/author/:authorId')
-    app.route('/quote/:quoteId')
+    app.route(constants.API_VERSION + '/quotes/:quoteId')
         .get(quote.get_a_quote);
 
-    app.route('/quote/')
+    app.route(constants.API_VERSION + '/quotes/')
         .get(quote.get_all_quotes);
 
 };

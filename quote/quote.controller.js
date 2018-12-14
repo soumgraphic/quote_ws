@@ -81,30 +81,30 @@ exports.get_a_quote = function (req, res) {
     Quote.getQuoteById(req.params.quoteId, function (err, quote) {
         if (err) {
             res.send(err);
-        } else if (quote.length) {
-            Author.getAuthorById(quote[0].q_author_a_id, function (err, author) {
+        } else if (quote) {
+            Author.getAuthorById(quote.q_author_a_id, function (err, author) {
                 if (err) {
                     res.send(err);
                 } else {
-                    Category.getCategorieById(quote[0].q_category_c_id, function (err, category) {
+                    Category.getCategorieById(quote.q_category_c_id, function (err, category) {
                         if (err) {
                             res.send(err);
                         } else {
-                            TagWithQuote.getQuoteTagByQuoteId(quote[0].q_id, function (err, quote_tags) {
+                            TagWithQuote.getQuoteTagByQuoteId(quote.q_id, function (err, quote_tags) {
                                 if (err) {
                                     res.send(err);
                                 } else {
+                                    quote.author = author;
+                                    quote.category = category;
+                                    quote.tagWithQuote = quote_tags;
                                     res.json({
                                         error: false,
                                         error_code: constants.SUCCESSFULLY_COMPLETED,
                                         message: 'Quote retrouver avec succès ',
-                                        number_of_results: quote.length,
+                                        number_of_results: 1,
                                         //Todo: quote: [quote, author],
                                         results: {
-                                            quote,
-                                            author,
-                                            category,
-                                            quote_tags
+                                            quote
                                         }
                                     });
                                 }
@@ -125,19 +125,33 @@ exports.get_a_quote = function (req, res) {
 };
 
 exports.get_all_quotes = function (req, res) {
-    Quote.getAllQuotes(function (err, quote) {
+    Quote.getAllQuotes(function (err, quotes) {
         if (err) {
             res.send(err);
-        } else if (quote.length) {
-            res.json({
-                error: false,
-                error_code: constants.SUCCESSFULLY_COMPLETED,
-                message: 'Les quotes ont été retrouver avec succès ',
-                number_of_results: quote.length,
-                //Todo: quote: [quote, author],
-                results: {
-                    quote
+        } else if (quotes.length) {
+            const promises = [];
+            quotes.forEach(function (quote) {
+                try {
+                    promises.push(getQuoteAndElements(quote.q_id));
+                }catch (e) {
+                   console.error(e.message)
                 }
+            });
+            Promise.all(promises).then(function(values){
+                res.json({
+                    error: false,
+                    error_code: constants.SUCCESSFULLY_COMPLETED,
+                    message: 'Les quotes ont été retrouver avec succès ',
+                    number_of_results: values.length,
+                    //Todo: quote: [quote, author],
+                    results:
+                        values
+
+                }).catch(err => {
+                    res.send(err);
+                  console.log(err);
+                });
+
             });
         } else {
 
@@ -145,7 +159,7 @@ exports.get_all_quotes = function (req, res) {
                 error: false,
                 error_code: constants.NO_VALUE_FOUND,
                 message: 'Aucun quote trouvé dans la Base de données ',
-                quote
+                quotes
             });
         }
     });
@@ -180,7 +194,6 @@ exports.delete_a_quote = function (req, res) {
 // Function utilities
 
 function createTagsAndAddAllInQuote(quoteId, tags_list) {
-
     for (let item of tags_list) {
         //let new_tag = `{"name": "${item}"}`;
         //Si le nom du tag n'est pas vide
@@ -218,6 +231,41 @@ function createTagsAndAddAllInQuote(quoteId, tags_list) {
         }
     }
 
+}
+
+function getQuoteAndElements(quoteId) {
+    return new Promise(function (resolve,reject) {
+        if (quoteId){
+            Quote.getQuoteById(quoteId, function (err, quote) {
+                if (err) {
+                    reject(err);
+                } else if (quote) {
+                    Author.getAuthorById(quote.q_author_a_id, function (err, author) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            Category.getCategorieById(quote.q_category_c_id, function (err, category) {
+                                if (err) {
+                                    reject(err);
+                                } else {
+                                    TagWithQuote.getQuoteTagByQuoteId(quote.q_id, function (err, quote_tags) {
+                                        if (err) {
+                                            reject(err);
+                                        } else {
+                                            quote.author = author;
+                                            quote.category = category;
+                                            quote.tagWithQuote = quote_tags;
+                                            resolve(quote);
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
 }
 
 

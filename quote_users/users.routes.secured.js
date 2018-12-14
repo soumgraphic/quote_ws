@@ -1,14 +1,16 @@
 'use strict';
 
-module.exports = function (app) {
-    var user = require('./users.controller');
+let constants = require('../config/constants');
 
-    app.route('/user')
+module.exports = function (app) {
+    let user = require('./users.controller');
+
+    app.route(constants.API_VERSION + '/users')
         .get(user.get_all_user);
 
-    app.route('/user/:userId')
+    app.route(constants.API_VERSION + '/users/:userId')
         .get(user.get_a_user);
 
-    app.route('/user/authentication')
+    app.route(constants.API_VERSION + '/users/authentication')
         .post(user.user_authentication);
 };

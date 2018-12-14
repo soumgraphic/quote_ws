@@ -1,13 +1,13 @@
 'use strict';
-var constants = require('../config/constants');
+let constants = require('../config/constants');
 
 module.exports = function (app) {
-    var tag = require('./tag.controller');
+    let tag = require('./tag.controller');
 
     //Pour mettre la version de l'api app.route(constants.API_VERSION + '/tag/:tagId')
-    app.route('/tag/:tagId')
+    app.route(constants.API_VERSION + '/tags/:tagId')
         .get(tag.get_a_tag);
 
-    app.route('/tag/')
+    app.route(constants.API_VERSION + '/tags/')
         .get(tag.get_all_tag);
 };

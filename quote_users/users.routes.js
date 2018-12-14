@@ -1,8 +1,10 @@
 'use strict';
 
-module.exports = function (app) {
-    var user = require('./users.controller');
+let constants = require('../config/constants');
 
-    app.route('/user')
+module.exports = function (app) {
+    let user = require('./users.controller');
+
+    app.route(constants.API_VERSION + '/user')
         .post(user.create_a_user);
 };

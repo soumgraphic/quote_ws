@@ -36,7 +36,7 @@ exports.get_a_category = function (req, res) {
     Category.getCategorieById(req.params.catId, function (err, category) {
         if (err) {
             res.send(err);
-        } else if (category.length > 0) {
+        } else if (category) {
             res.json({
                 error: false,
                 error_code: constants.SUCCESSFULLY_COMPLETED,
@@ -116,7 +116,7 @@ exports.update_a_category = function (req, res) {
         Category.getCategorieById(req.params.catId, function (err, get_category) { // On vérifie d'abord si la catégorie existe
             if (err) {
                 res.send(err);
-            } else if (get_category.length > 0) { //Si la catégorie existe dans la base
+            } else if (get_category) { //Si la catégorie existe dans la base
                 Category.updateCategoryById(req.params.catId, update_category, function (err, category) {
                     if (err) {
                         res.send(err);
@@ -124,7 +124,7 @@ exports.update_a_category = function (req, res) {
                         res.json({
                             error: false,
                             error_code: constants.SUCCESSFULLY_COMPLETED,
-                            message: 'La catégorie ' + get_category[0].c_name + ' a bien été renommer en ' + update_category.name
+                            message: 'La catégorie ' + get_category.c_name + ' a bien été renommer en ' + update_category.name
                         });
                     }
                 });
@@ -145,7 +145,7 @@ exports.delete_a_category = function (req, res) {
     Category.getCategorieById(req.params.catId, function (err, getCategory) {
         if (err) {
             res.send(err);
-        } else if (getCategory.length > 0) {
+        } else if (getCategory) {
             Category.removeCategorieById(req.params.catId, function (err, category) {
                 if (err) {
                     res.send(err);

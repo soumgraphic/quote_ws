@@ -25,7 +25,8 @@ Author.getAuthorById = function (authorId,result){
           console.log("error: ", err);
           result(err,null);
       } else {
-          result(null,res);
+          //res[0] car j'ai un seul élément qui est retourné par ma fonction
+          result(null,res[0]);
       }
   });
 };

@@ -12,6 +12,10 @@ let Quote = function (quote) {
     this.author_name = quote.author_name;
 };
 
+const setAuthor = function(author) {
+    this.author = author;
+}
+
 //Fonction de Création d'un quote mysql
 
 Quote.createQuote = function createQuote(newQuote, result) {
@@ -34,7 +38,7 @@ Quote.getQuoteById = function (quoteId,result){
             console.log("error: ", err);
             result(err,null);
         } else {
-            result(null,res);
+            result(null,res[0]);
         }
     });
 };
