@@ -3,7 +3,7 @@ Quote nodejs mysql webservice with user authentication (JWT), tag, author and ca
 
 ### Quote endpoint call example
 
-`Voici un code en C :
+`https://quotews.cleverapps.io
 
 {
     "error": false,
@@ -44,3 +44,5 @@ Quote nodejs mysql webservice with user authentication (JWT), tag, author and ca
         }
     }
 }
+`
+
