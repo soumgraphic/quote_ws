@@ -1,7 +1,9 @@
 # quote_ws
 Quote nodejs mysql webservice with user authentication (JWT), tag, author and category
 
-## Quote endpoint example
+### Quote endpoint call example
+
+`Voici un code en C :
 
 {
     "error": false,
